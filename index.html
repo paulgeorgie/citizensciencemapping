@@ -9,18 +9,7 @@
 		<script src="js/jquery.min.js"></script>
 		<script src="js/jquery.poptrox.min.js"></script>
 		<script src="js/skel.min.js"></script>
-		<script src="js/init.js"></script>
-    <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
-     <style>       
-        #map { 
-          position:absolute; 
-          top:0; 
-          bottom:0; 
-          width:100%;
-          height: 551px; 
-        }
-     </style>      
+		<script src="js/init.js"></script>      
 		<noscript>
 			<link rel="stylesheet" href="css/skel-noscript.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -42,9 +31,10 @@
 					<nav id="nav">
 						<ul>
 							<li><a href="#intro">Intro</a></li>
-							<li><a href="#one">What I Do</a></li>
-							<li><a href="#two">Who I Am</a></li>
-							<li><a href="#work">My Work</a></li>
+							<li><a href="#one">Pilot Study</a></li>
+							<li><a href="#two">Initial Engagement</a></li>
+              <li><a href="#three">Mapping Parties</a></li>
+							<li><a href="#work">Results</a></li>
 							<li><a href="#contact">Contact</a></li>
 						</ul>
 					</nav>
@@ -55,11 +45,10 @@
 			<section id="intro" class="main style1 dark fullscreen">
 				<div class="content container small">
 					<header>
-						<h2>Hey.</h2>
+						<h2>What is Citizen Science Mapping?</h2>
 					</header>
-					<p>Welcome to <strong>Big Picture</strong> a responsive site template designed
-					by <a href="http://html5up.net">HTML5 UP</a>, built on <a href="http://skeljs.org">skelJS</a>,
-					and released for free under the <a href="http://html5up.net/license/">Creative Commons Attribution 3.0 license</a>.</p>
+					<p>Citizen Science Mapping is an <strong>open source mapping</strong> approach that engages and enthuses communities to record, visualise and share their local knowledge as <strong>geographic information</strong>.</p>  
+          <p>Our belief is that <b>citizens know best</b> and - at a time of public sector funding cuts and increased focus on enabling communities to take responsibilty for their environment and help provide the evidence base for public policy - our world leading approach is empowering citizens to feel increasingly informed, connected and self-reliant.</p>
 					<footer>
 						<a href="#one" class="button style2 down">More</a>
 					</footer>
@@ -70,11 +59,10 @@
 			<section id="one" class="main style2 right dark fullscreen">
 				<div class="content box style2">
 					<header>
-						<h2>What I Do</h2>
+						<h2>Citizen Science Mapping for Climate Resilience:</h2>
+            <h3>Carse of Gowrie, Scotland</h3>
 					</header>
-					<p>Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum. 
-					Fusce blandit ultrices sapien, in accumsan orci rhoncus eu. Sed sodales venenatis arcu, 
-					id varius justo euismod in. Curabitur egestas consectetur magna urna.</p>
+					<p>In early 2013, the first Citizen Science Mapping project got underway with the aim of identifying and mapping out <a href="http://www.carsesus.org/pows-and-drainage.html" target="_blank">important drainage features</a> across a vast landscape of communities, from the Tay to the Braes.</p>
 				</div>
 				<a href="#two" class="button style2 down anchored">Next</a>
 			</section>
@@ -83,11 +71,20 @@
 			<section id="two" class="main style2 left dark fullscreen">
 				<div class="content box style2">
 					<header>
-						<h2>Who I Am</h2>
+						<h2>Let's Begin</h2>
 					</header>
-					<p>Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum. 
-					Fusce blandit ultrices sapien, in accumsan orci rhoncus eu. Sed sodales venenatis arcu, 
-					id varius justo euismod in. Curabitur egestas consectetur magna urna.</p>
+					<p>Before we touch technology, our first workshop facilitates discussion on <strong>local priorities</strong>.  This helps to create a <strong>community catalogue</strong> that inclues features of historical, cultural, social and environmental importance.</p>
+				</div>
+				<a href="#three" class="button style2 down anchored">Next</a>
+			</section>
+      
+      <!-- Three -->
+			<section id="three" class="main style2 right dark fullscreen">
+				<div class="content box style2">
+					<header>
+						<h2>Let's Get Mapping</h2>
+					</header>
+					<p>With our local landscape in mind, it's time to get mapping.  Using everything from satellite images, smartphones (and paper maps!), citizens begin to transform their knowledge into the three kinds of (vector) geographic information: points, lines and polygons.</p>
 				</div>
 				<a href="#work" class="button style2 down anchored">Next</a>
 			</section>
@@ -95,50 +92,11 @@
 		<!-- Work -->
 			<section id="work" class="main style3 primary">
 				  <header>
-						<h2>Spot the Difference</h2>
-					
-            <!-- Interactive Swipe Map -->
-       
-       
-          <style>
-              #range {
-                margin-left:0px;
-                width: 100%;
-                position: absolute;                
-              }
-              .leaflet-top .leaflet-control-zoom {
-                margin-top: 20px;
-              }
-          </style>   
-          <div id='map'></div>
-					<input id="range" type="range" min="0" max="1.0" step="any" style="width: 100%; position:absolute" />
-          
-            <script>
-                var map = L.mapbox.map('map');
-            
-                L.mapbox.tileLayer('paulgeorgie.gje46fck').addTo(map);
-                var overlay = L.mapbox.tileLayer('paulgeorgie.i6b1dp31').addTo(map);
-            
-                var range = document.getElementById('range');
-            
-                function clip() {
-                    var nw = map.containerPointToLayerPoint([0, 0]),
-                        se = map.containerPointToLayerPoint(map.getSize()),
-                        clipX = nw.x + (se.x - nw.x) * range.value;
-            
-                    overlay.getContainer().style.clip = 'rect(' + [nw.y, clipX, se.y, nw.x].join('px,') + 'px)';
-                }
-            
-                range['oninput' in range ? 'oninput' : 'onchange'] = clip;
-                map.on('move', clip);
-            
-                map.setView([56.444, -3.196], 12);    
-            
-            </script>
-            
+						<h2>Spot the Difference</h2>			           
           </header>
+          <p>The results were impressive.  In the space of only a few weeks, a small group of volunteer mappers had recorded around 11,000 feautures.  Many of these includes streams, farmland, households, and points of interest.</p>
           
-          
+          <iframe width='100%' height='551px' frameBorder='0' src='map.html'></iframe>
             
 
 
