@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset=utf-8 />
-<title>Swipe Layers</title>
+<title>Carse of Gorwrie - before & after</title>
 
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
 <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
@@ -15,6 +15,8 @@
 </head>
 <body>
 
+<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.2/Leaflet.fullscreen.min.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.2/leaflet.fullscreen.css' rel='stylesheet' />
 
 <style>
 #range {
@@ -27,14 +29,78 @@
 </style>
 
 <div id='map'></div>
+
+<div id='legend-content' style='display: none;'>
+<div class='my-legend'>
+<div class='legend-title'>Legend</div>
+<div class='legend-scale'>
+  <ul class='legend-labels'>
+    <li><span style='background:grey;'></span>buildings</li>
+    <li><span style='background:#594;'></span>greenspace</li>
+    <li><span style='background:#FEE8CA;'></span>farmland</li>
+    <li><span style='background:#168;'></span>waterways</li>
+    <li><span style='background:whitesmoke;'></span>roads & paths</li>
+    <li><span style='background:#813;'></span>POIs</li>
+  </ul>
+</div>
+<div class='legend-source'>Source: <a href="http://www.openstreetmap.org" target="blank">OpenStreetMap (cc-by-sa)</a></div>
+</div>
+
+<style type='text/css'>
+  .my-legend .legend-title {
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 90%;
+    }
+  .my-legend .legend-scale ul {
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 0;
+    float: left;
+    list-style: none;
+    }
+  .my-legend .legend-scale ul li {
+    font-size: 80%;
+    list-style: none;
+    margin-left: 0;
+    line-height: 18px;
+    margin-bottom: 2px;
+    }
+  .my-legend ul.legend-labels li span {
+    display: block;
+    float: left;
+    height: 16px;
+    width: 30px;
+    margin-right: 5px;
+    margin-left: 0;
+    border: 1px solid #999;
+    }
+  .my-legend .legend-source {
+    font-size: 70%;
+    color: #999;
+    clear: both;
+    }
+  .my-legend a {
+    color: #777;
+    }
+</style>
+</div>
+
 <input id="range" type="range" min="0" max="1.0" step="any" style="width: 100%; position: absolute" />
 <script>
+
     var map = L.mapbox.map('map');
+    
+    map.legendControl.addLegend(document.getElementById('legend-content').innerHTML);
+     
+    L.control.fullscreen().addTo(map);
 
     L.mapbox.tileLayer('paulgeorgie.i6b8ekbp').addTo(map);
     var overlay = L.mapbox.tileLayer('paulgeorgie.i6b1dp31').addTo(map);
 
     var range = document.getElementById('range');
+
 
     function clip() {
         var nw = map.containerPointToLayerPoint([0, 0]),
@@ -47,7 +113,7 @@
     range['oninput' in range ? 'oninput' : 'onchange'] = clip;
     map.on('move', clip);
 
-    map.setView([56.444, -3.196], 12);    
+    map.setView([56.43, -3.196], 12);       
 
 </script>
 
